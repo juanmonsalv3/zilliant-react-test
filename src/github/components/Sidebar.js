@@ -1,13 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { Drawer, List, ListItem, Avatar, FontIcon } from 'react-md'
 
-import { connect } from '../store'
-
 const Sidebar = ({ user }) => {
-  console.log(user)
   return (
-    user
-    ? <Drawer
+    user &&
+    <Drawer
       className='sidebar'
       type={Drawer.DrawerTypes.PERSISTENT}
       visible
@@ -37,8 +35,11 @@ const Sidebar = ({ user }) => {
         />
       </List>
     </Drawer>
-    : null
   )
 }
 
-export default connect(Sidebar)
+Sidebar.propTypes = {
+  user: PropTypes.object.isRequired
+}
+
+export default Sidebar;
